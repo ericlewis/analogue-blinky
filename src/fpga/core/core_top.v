@@ -624,8 +624,8 @@ end
 
 always @(posedge clk_core_12288) begin
     cnt <= cnt + 1;
+	 blink_enable <= cnt[24];
 end
 
-assign blink_enable = cnt[24];
     
 endmodule
