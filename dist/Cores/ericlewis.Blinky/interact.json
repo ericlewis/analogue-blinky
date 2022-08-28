@@ -6,7 +6,7 @@
                 "name": "Blink",
                 "id": 1,
                 "type": "check",
-                "enabled": false,
+                "enabled": true,
                 "address": "0x00100000",
                 "defaultval": 0,
                 "value": 1,
