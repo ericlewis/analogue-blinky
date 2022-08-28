@@ -314,6 +314,9 @@ always @(*) begin
     default: begin
         bridge_rd_data <= 0;
     end
+    32'h00100000: begin
+		bridge_rd_data <= blink_enable;
+	end
     32'h10xxxxxx: begin
         // example
         // bridge_rd_data <= example_device_data;
@@ -612,6 +615,17 @@ mf_pllbase mp1 (
     .locked         ( pll_core_locked )
 );
 
+reg blink_enable = 0;
+reg [31: 0] cnt;
 
+initial begin
+    cnt <=32'h00000000;
+end
+
+always @(posedge clk_core_12288) begin
+    cnt <= cnt + 1;
+end
+
+assign blink_enable = cnt[24];
     
 endmodule
